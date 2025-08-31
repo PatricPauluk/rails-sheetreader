@@ -1,0 +1,15 @@
+<h1>Upload de Planilhas</h1>
+
+<% if flash[:notice] %>
+    <p style="color: green;"><%= flash[:notice] %></p>
+<% end %>
+
+<%= form_with url: uploads_path, local: true, multipart: true do |form| %>
+    <p>
+        <%= form.label :file, "Selecione a Planilha" %>
+        <%= form.file_field :file %>
+    </p>
+    <p>
+        <%= form.submit "Processar Planilha" %>
+    </p>
+<% end %>
