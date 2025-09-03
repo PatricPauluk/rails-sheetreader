@@ -1,4 +1,4 @@
-class UploadsController < ApplicationController
+class SpreadsheetsController < ApplicationController
   def new
   end
 
@@ -15,6 +15,6 @@ class UploadsController < ApplicationController
     ProcessSpreadsheetJob.perform_async(temp_file_path.to_s)
 
     flash[:notice] = "Sua planilha está sendo processada em segundo plano. Atualize a página em alguns instantes."
-    redirect_to new_upload_path
+    redirect_to new_spreadsheet_path
   end
 end

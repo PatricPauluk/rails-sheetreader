@@ -1,8 +1,6 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
-  get "uploads/new"
-  get "uploads/create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   mount Sidekiq::Web => "/sidekiq"
@@ -11,7 +9,12 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  resources :uploads, only: [ :new, :create ]
+  resources :spreadsheets, only: [ :new, :create ] do
+    collection do
+      post :export_csv
+      post :export_xlsx
+    end
+  end
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest

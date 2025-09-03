@@ -4,7 +4,7 @@
     <p style="color: green;"><%= flash[:notice] %></p>
 <% end %>
 
-<%= form_with url: uploads_path, local: true, multipart: true do |form| %>
+<%= form_with url: spreadsheets_path, local: true, multipart: true do |form| %>
     <p>
         <%= form.label :file, "Selecione a Planilha" %>
         <%= form.file_field :file %>
