@@ -13,3 +13,14 @@
         <%= form.submit "Processar Planilha" %>
     </p>
 <% end %>
+
+<h2>Exportar Dados</h2>
+<div style="display: flex; gap: 10px;">
+    <%= form_with url: export_xlsx_spreadsheets_path, local: true do |form| %>
+        <%= form.submit "Exportar para XLSX" %>
+    <% end %>
+    <%= form_with url: export_csv_spreadsheets_path, local: true do |form| %>
+        <%= form.submit "Exportar para CSV" %>
+    <% end %>
+</div>
+    
